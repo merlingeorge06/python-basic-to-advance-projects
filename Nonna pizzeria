@@ -1,0 +1,50 @@
+print("WELCOME TO NONNA PIZZERIA 🍕!!!")
+
+s = input("What size do you prefer 😏 ? (S),(M),(L)\n Press S for small size (5 inches)\n Press M for medium size (8 inches)\n Press L for large size (12 inches)\n").upper()
+# you are not being judged, it's about pizzasss
+
+c = input("Do you prefer homemade creamy thick cheese on top of your pizza? (y/n): ").lower()
+p = input("Fresh from Peppa Pig family, you want pepperoni? (y/n): ").lower()
+
+bill = 0
+
+if s == "L":
+    bill = 10
+    if c == "y":
+        bill += 2
+    else :
+        bill = bill
+    if p == "y":
+        bill += 2
+    else :
+        bill = bill
+
+elif s == "M":
+    bill = 7
+    if c == "y":
+        bill += 2
+    else:
+        bill = bill
+    if p == "y":
+        bill += 2
+    else:
+        bill = bill
+
+elif s == "S":
+    bill = 5
+    if c == "y":
+        bill += 2
+    else :
+        bill = bill
+    if p == "y":
+        bill += 2
+    else :
+        bill = bill
+
+else:
+    print("Invalid input for size. Please choose S, M, or L.")
+    bill = 0
+
+if bill > 0:
+    print("Total bill is: $", bill)
+    print ("Have a pizzilicious day !!")
