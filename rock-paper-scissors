@@ -1,0 +1,147 @@
+import random
+print("Welcome to the game of rock paper scissor")
+s = input("Enter your move: rock , paper, scissor !!!\n").lower()
+r=random.randint(1,3)
+if s == "rock":
+    print("""    _______
+    ---'   ____)
+          (_____)
+          (_____)
+          (____)
+    ---.__(___)
+
+    """)
+    if r == 1:
+        print("computer : rock")
+        print("""    
+        ---'   ____)
+              (_____)
+              (_____)
+              (____)
+        ---.__(___)
+
+        """)
+        print("DRAW")
+
+    elif r == 2:
+        print("paper")
+        print("""
+             _______
+        ---'   ____)____
+                  ______)
+                  _______)
+                 _______)
+        ---.__________)
+        """)
+
+        print("Paper defeated the rock : YOU LOSE")
+    else:
+        print("scissor")
+        print("""
+            _______
+        ---'   ____)____
+                  ______)
+               __________)
+              (____)
+        ---.__(___)
+        """)
+
+        print("rock crushed the paper : YOU WON")
+elif s == "paper":
+    print("""
+         _______
+    ---'   ____)____
+              ______)
+              _______)
+             _______)
+    ---.__________)
+    """)
+
+    if r == 1:
+        print("computer : rock")
+        print("""    
+        ---'   ____)
+              (_____)
+              (_____)
+              (____)
+        ---.__(___)
+
+        """)
+        print("Paper defeated the rock : YOU WON")
+
+    elif r == 2:
+        print("paper")
+        print("""
+             _______
+        ---'   ____)____
+                  ______)
+                  _______)
+                 _______)
+        ---.__________)
+        """)
+
+        print("DRAW")
+    else:
+        print("scissor")
+        print("""
+            _______
+        ---'   ____)____
+                  ______)
+               __________)
+              (____)
+        ---.__(___)
+        """)
+
+        print("scissor crushed the paper : YOU LOSE")
+elif s == "scissor":
+    print("""
+        _______
+    ---'   ____)____
+              ______)
+           __________)
+          (____)
+    ---.__(___)
+    """)
+
+    if r == 1:
+        print("computer : rock")
+        print("""    
+        ---'   ____)
+              (_____)
+              (_____)
+              (____)
+        ---.__(___)
+
+        """)
+        print("Scissor gets crushed by the rock : YOU LOSE")
+
+    elif r == 2:
+        print("paper")
+        print("""
+             _______
+        ---'   ____)____
+                  ______)
+                  _______)
+                 _______)
+        ---.__________)
+        """)
+
+        print("Scissors defeats the paper : YOU WON")
+    else:
+        print("scissor")
+        print("""
+            _______
+        ---'   ____)____
+                  ______)
+               __________)
+              (____)
+        ---.__(___)
+        """)
+
+        print("DRAW")
+else:
+    print("INVALID CHOICE")
+print("Game over !!!!!")
+
+
+
