@@ -1,0 +1,122 @@
+import random as rnd
+
+list1 = ['apple', 'banana', 'orange', 'kiwi', 'pineapple', 'mango', 'grape']
+
+print("""
+██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗
+██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║
+███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║
+██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║
+██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+""")
+
+print("WELCOME TO HANGMAN GAME !!!!")
+print("IT IS BASED ON YOUR FAVOURITE FRUITS. SO ENJOY !!! ")
+
+sem = rnd.choice(list1)
+print(f"IT IS A {len(sem)} LETTERS FRUIT NAME.")
+placeholder = ["-"] * len(sem)
+print("".join(placeholder))
+
+lives = 6
+game_over = False
+
+while not game_over:
+    user_ip = input("Guess a letter: ").lower()
+
+    if user_ip in sem:
+        for i in range(len(sem)):
+            if sem[i] == user_ip:
+                placeholder[i] = user_ip
+    else:
+        lives -= 1
+
+    print("".join(placeholder))
+
+    # Hangman drawings and lives display
+    if lives == 6:
+        print("""
+     _______
+     |     |
+     |     
+     |    
+     |    
+     |
+    _|_     
+        """)
+        print("YOU HAVE 6 LIVES : 💖💖💖💖💖💖")
+    elif lives == 5:
+        print("""
+     _______
+     |     |
+     |     O
+     |    
+     |    
+     |
+    _|_
+        """)
+        print("YOU HAVE 5 LIVES REMAINING : 💖💖💖💖💖")
+    elif lives == 4:
+        print("""
+     _______
+     |     |
+     |     O
+     |     |
+     |    
+     |
+    _|_
+        """)
+        print("YOU HAVE 4 LIVES REMAINING : 💖💖💖💖")
+    elif lives == 3:
+        print("""
+     _______
+     |     |
+     |     O
+     |    /|
+     |    
+     |
+    _|_
+        """)
+        print("YOU HAVE 3 LIVES REMAINING : 💖💖💖")
+    elif lives == 2:
+        print("""
+     _______
+     |     |
+     |     O
+     |    /|\\
+     |    
+     |
+    _|_
+        """)
+        print("YOU HAVE 2 LIVES REMAINING : 💖💖")
+    elif lives == 1:
+        print("""
+     _______
+     |     |
+     |     O
+     |    /|\\
+     |    / 
+     |
+    _|_
+        """)
+        print("YOU HAVE 1 LIFE REMAINING : 💖")
+    elif lives == 0:
+        print("""
+     _______
+     |     |
+     |     O
+     |    /|\\
+     |    / \\
+     |
+    _|_
+        """)
+        print("YOU HAVE 0 LIVES REMAINING")
+        print("GAME OVER")
+        print("THE WORD WAS:", sem.upper())
+        game_over = True
+
+    if "-" not in placeholder:
+        print("You win!")
+        print("The word was:", sem.upper())
+        game_over = True
