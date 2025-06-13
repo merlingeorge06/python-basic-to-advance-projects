@@ -1,0 +1,51 @@
+letters = [
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+]
+
+def encode (org_txt,org_shift):
+    ch=""
+    for char in org_txt:
+        if char not in letters:
+            ch += char
+        else:
+            s = letters.index(char) + org_shift
+            ch += letters[s]
+
+
+    print("encoded text is: ", ch)
+
+
+def decode(org_txt,org_shift):
+    ch=""
+    for char in org_txt:
+        if char not in letters:
+            ch += char
+        else :
+            s=letters.index(char) - org_shift
+            ch += letters[s]
+
+
+    print("decoded text is: ", ch)
+
+
+while True:
+    print("WELCOME TO CAESAR CIPHER : A place for you to encode and decode your code !!!!")
+    text = input("Enter your text to encode or decode: \n ")
+    shift = int(input("Enter your shift: \n"))
+    print(f"your text is {text} and shift is {shift}.")
+    i= input("What would you like to do? ENCODE(e) or DECODE(d)?\n").lower()
+    if i == "e":
+        encode(org_txt=text, org_shift=shift)
+    elif i == "d":
+        decode(org_txt=text, org_shift=shift)
+    else :
+        print("WRONG INPUT !!!")
+
+    cont = input("\nDo you want to continue? (yes or no):\n").lower()
+    if cont != "yes":
+        print("Thank you for using Caesar Cipher. Goodbye!")
+        break
+
