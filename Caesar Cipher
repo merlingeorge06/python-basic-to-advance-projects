@@ -11,7 +11,11 @@ def encode (org_txt,org_shift):
         if char not in letters:
             ch += char
         else:
-            s = letters.index(char) + org_shift
+            s = (letters.index(char) + org_shift) % len(letters)
+            '''
+            NOW YOU MIGHT BE THINKING WHY I USED %len(letters) :
+            To solve the problem of 'out of index range' 
+            if we want to shift the letter 'Z' 5 times it will show out of index range but with %len(letters) it will work in a loop'''
             ch += letters[s]
 
 
@@ -24,7 +28,7 @@ def decode(org_txt,org_shift):
         if char not in letters:
             ch += char
         else :
-            s=letters.index(char) - org_shift
+            s=(letters.index(char) - org_shift)%len(letters)
             ch += letters[s]
 
 
