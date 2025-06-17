@@ -1,0 +1,93 @@
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    return a / b
+
+
+def calc():
+    print("""
+         _____________________
+        |  _________________  |
+        | |              0. | |
+        | |_________________| |
+        |  ___ ___ ___   ___  |
+        | | 7 | 8 | 9 | | + | |
+        | |___|___|___| |___| |
+        | | 4 | 5 | 6 | | - | |
+        | |___|___|___| |___| |
+        | | 1 | 2 | 3 | | x | |
+        | |___|___|___| |___| |
+        | | . | 0 | = | | ÷ | |
+        | |___|___|___| |___| |
+        |_____________________|
+
+     ██████╗  █████╗ ███████╗██╗ ██████╗ 
+    ██████╔╝ ██╔══██╗██╔════╝██║██╔═══██╗
+    ██╔═══╝  ███████║███████╗██║██║   ██║
+    ██║      ██╔══██║╚════██║██║██║   ██║
+    ╚██████╗ ██║  ██║███████║██║╚██████╔╝
+     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ 
+    """)
+
+    print("WELCOME TO MY SIMPLE CALCULATOR 📟")
+    print("MENU:")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("\n")
+
+    sammy = True
+    n1 = int(input("Enter 1st number:\n"))
+
+    while sammy:
+        n2 = int(input("Enter 2nd number:\n"))
+        print("\n")
+        ch = int(input("Enter choice: "))
+        total = 0
+
+        if ch == 1:
+            total = add(n1, n2)
+            print("The sum of {} and {} is {}".format(n1, n2, total))
+        elif ch == 2:
+            total = subtract(n1, n2)
+            print("The difference of {} and {} is {}".format(n1, n2, total))
+        elif ch == 3:
+            total = multiply(n1, n2)
+            print("The product of {} and {} is {}".format(n1, n2, total))
+        elif ch == 4:
+            if n2 != 0:
+                total = divide(n1, n2)
+                print("The quotient of {} and {} is {}".format(n1, n2, total))
+            else:
+                print("Division by zero is not allowed!")
+                total = n1  # keep n1 unchanged
+        else:
+            print("Invalid choice")
+            total = n1
+
+        r = input(
+            "\nDO YOU STILL WANT TO CONTINUE WITH THE ANSWER (c) / NEW VALUES (n) / END THE CALCULATION (e)? ").lower()
+
+        if r == 'e':
+            print("Thank you for using this calculator!")
+            sammy = False
+        elif r == 'n':
+            n1 = int(input("\nEnter new 1st number:\n"))
+        elif r == 'c':
+            n1 = total
+        else:
+            print("Invalid input, continuing with current result.")
+
+
+calc()
