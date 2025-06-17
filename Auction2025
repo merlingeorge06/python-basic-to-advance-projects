@@ -1,0 +1,42 @@
+sam = True
+while sam:
+    print("WELCOME TO AUCTION 2025 !!!")
+    print("""
+
+
+                            __________________________
+                           |                          |
+                           |        GAVEL HEAD        |
+                           |__________________________|
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                                  ||         ||
+                      ======================================
+                               HANDLE HANDLE HANDLE
+                      ======================================
+              """)
+    bidders = int(input("How many bidders are there ?\n"))
+    print(f'Total bidders are : {bidders}')
+    print(" ! While entering the amount, kindly keep the screen away from other bidders. !")
+    bid = {}
+    for i in range(bidders):
+        name = input("Enter your name :\n")
+        amount = int(input("Enter bid number for bidder " + str(i+1)+"\n"))
+        bid[name] = amount
+        print("\n"*29)
+    o=max(bid.values())
+    for key, value in bid.items():
+        if value == o:
+            print("THE HIGHEST BIDDER IS: \n", key.upper())
+            print ("WITH A BID OF:\n", o)
+            break # I have used break here ; if 2 or more people enter the same highest amount, it will print the first person's name.
+    i = input("Do you want to continue bidding (y/n) ?\n")
+    if i != "y":
+        print("Thank you for using Auction 2025 !!!")
+        sam = False
