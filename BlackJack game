@@ -1,0 +1,124 @@
+import random
+
+list1=[2,3,4,5,6,7,8,9,10,10,10,10,11]
+
+player1 = []
+dealer1 = []
+
+print(r"""
+╔═════════╗     ╔═════════╗     ╔═════════╗
+║ A       ║     ║ J       ║     ║ ♠ B L A ║
+║ ♠       ║     ║ ♣       ║     ║ ♠ C K J ║
+║    ♠    ║     ║    ♣    ║     ║ ♠ A C K ║
+║       ♠ ║     ║       ♣ ║     ║ ♠       ║
+║       A ║     ║       J ║     ╚═════════╝
+╚═════════╝     ╚═════════╝
+
+WELCOME TO MY BLACKJACK GAME ♠️♥️♣️♦️🃏
+""")
+
+print("""
+INTRODUCTION TO BLACKJACK GAME :
+
+Blackjack is a card game where the objective is to accumulate cards with a total value as close to 21 
+as possible without exceeding it. 
+If your hand's total exceeds 21, it is called a bust, and you lose immediately regardless of how much you have gone over.
+
+CARD VALUES :
+
+Cards 2 through 10 count as their face value.
+Jack, Queen, and King each count as 10.
+The Ace can count as either 1 or 11, depending on whether counting it as 11 would cause the hand to bust.
+
+""")
+
+print("Let's begin the game !")
+n=input("Please enter your name : \n").upper()
+print("Now the dealer will assign you and the computer your first cards")
+input("Press enter to continue...")
+
+def calculate_ace(hand):
+    total = sum(hand)
+    if 11 in hand and total > 21:
+        total = total - 10
+        hand[hand.index(11)]=1
+    return total
+
+
+
+
+
+for i in range (2):
+    rn = random.choice(list1)
+    player1.append(rn)
+    rnc = random.choice(list1)
+    dealer1.append(rnc)
+
+sammy = True
+while sammy:
+    print (f"{n} your cards are: {player1} and the total value is : {calculate_ace(player1)}")
+    print (f"DEALER'S 1st card is : {dealer1[0]}")
+    if calculate_ace(player1) == 21:
+        print(f"{n} you won !!!! BLACKJACK!!!")
+        print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+        sammy = False
+    elif calculate_ace(player1) > 21:
+        print(f"{n} you lose !!!! BUSTED!!!")
+        print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+        sammy = False
+
+    elif calculate_ace(dealer1) == 21:
+        print(f"{n} Dealer won !!!!")
+        print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+        sammy = False
+
+    elif calculate_ace(dealer1) > 21:
+        print(f"{n} you won !!!! BLACKJACK !!!!")
+        print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+        sammy = False
+
+    j=input("Type 'h' to hit or 's' to stay \n")
+    if j=='h':
+        rn=random.choice(list1)
+        player1.append(rn)
+        if calculate_ace(player1) == 21:
+            print(f"{n} you won !!!! BLACKJACK!!!")
+            print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+            sammy = False
+        elif calculate_ace(player1) > 21:
+            print(f"{n} you lose !!!! BUSTED!!!")
+            print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+            sammy = False
+    elif j=='s':
+        while calculate_ace(dealer1) <=17:
+            rnc=random.choice(list1)
+            dealer1.append(rnc)
+            if calculate_ace(player1) == calculate_ace(dealer1):
+                print("Draw")
+                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+                sammy = False
+            elif calculate_ace(player1) > calculate_ace(dealer1):
+                print(f"{n} you won !!!! BLACKJACK!!!")
+                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+                sammy = False
+            elif calculate_ace(dealer1) > 21:
+                print(f"{n} you won !!!! BLACKJACK !!!!")
+                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+                sammy = False
+
+            else:
+                print(f"{n} you lose !!!! BUSTED!!!")
+                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+                sammy = False
+    else :
+        print("WRONG INPUT !BEEEP!")
+
+
+
+''' AT THE BEGINNING I WAS SO UNFAMILIAR WITH THIS GAME'S LOGIC.....BUT I SOMEHOW CRACKED IT AND WROTE THIS.
+ (Scrolling btw this 'if','elif','else' made me go crazy 😭😭😭😭, but yeah it was worth the efforts)
+ You can find this code's easier version online, but I recommend doing it by yourself.
+ Obviously there are many changes you can commit for vulnerabilities as well as for smooth user-experience.
+ And to make this 'artsy' logo just ask chatgpt to make it for you in ASCII CODE
+ SUIT YOURSELF ❤️
+'''
