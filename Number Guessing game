@@ -3,7 +3,7 @@ import random
 list1 = list(range(1, 101))
 
 
-rn= random.choice(list1)
+
 
 
 print(r"""
@@ -11,20 +11,25 @@ print(r"""
 │ 🎲  N U M B E R    G U E S S  🎲 
 ╰──────────────────────────────╯
 """)
-print(rn)
+
 print ("WELCOME TO NUMBER GUESSING GAME !!!")
-print("\nI am Merlin (YOUR DREAMGIRL). Let's see if you are good at reading a my mind 😚\n")
-print ("WARNING : You can never guess what I am thinking.")
-print ("EASY HINT : No. between 1 - 100")
+print("\nI am Merlin (YOUR DREAMGIRL). Let's see if you are good at reading my mind 😚\n")
+name=input("Your name Mademoiselle/Gentleman ?\n ").title()
+print (f"WARNING {name} : You can never guess what I am thinking.")
+print ("HINT : No. between 1 - 100")
+print("Easy level - 10 chances")
+print("Hard level - 5 chances")
+
 input("Press ENTER to continue...")
 sammy = True
-l=5
-l1=10
+
 
 while sammy:
+    rn = random.choice(list1)
     n = input("EASY OR HARD LEVEL : (e/h)\n").lower()
-    print ("Easy level - 10 chances")
-    print ("Hard level - 5 chances")
+
+    l = 5
+    l1 = 10
 
     if n == "h":
 
@@ -32,7 +37,9 @@ while sammy:
             sam = int(input("Enter your guess: \n"))
             if sam == rn:
                print(f"\nSadly,You got it!. The number was : {rn}")
+               print("YOU WON,",name)
                sammy = False
+               break
             elif sam < 1 :
                 l = l - 1
                 print("YOU HAVE ENTERED A NUMBER LESS THAN 1. (Kindly enter numbers between 1-100 !!!)")
@@ -56,7 +63,7 @@ while sammy:
                     print(f"wrong number. Try again. You have {l} chances left")
             elif (rn/2) <= sam < ((3*rn)/4):
                 l = l - 1
-                print("HOT but still it is LOW. You can do better than that.")
+                print("You are close enough, but still it is LOW. You can do better than that.")
                 if l==0:
                     print("\n0 chances left. The number was : ",rn)
                 else:
@@ -64,7 +71,7 @@ while sammy:
 
             elif  ((3*rn)/4) <= sam < rn:
                 l= l-1
-                print("Almost there but it low. You can do better than that.")
+                print("Almost there but still it is LOW. You can do better than that.")
                 if l==0:
                     print("\n0 chances left. The number was : ",rn)
                 else:
@@ -97,6 +104,7 @@ while sammy:
             sam = int(input("Enter your guess: \n"))
             if sam == rn:
                 print(f"\nSadly,You got it!. The number was : {rn}")
+                print("YOU WON,",name)
                 sammy = False
                 break
             elif sam < 1 :
@@ -122,7 +130,7 @@ while sammy:
                     print(f"wrong number. Try again. You have {l1} chances left")
             elif (rn/2) <= sam < ((3*rn)/4):
                 l1 = l1 - 1
-                print("HOT but still it is LOW. You can do better than that.")
+                print("YOu are close enough but still it is LOW. You can do better than that.")
                 if l1==0:
                     print("\n0 chances left. The number was : ",rn)
                 else:
@@ -130,7 +138,7 @@ while sammy:
 
             elif  ((3*rn)/4) <= sam < rn:
                 l1= l1-1
-                print("Almost there but it low. You can do better than that.")
+                print("Almost there but it is still low. You can do better than that.")
                 if l1==0:
                     print("\n0 chances left. The number was : ",rn)
                 else:
@@ -164,6 +172,7 @@ while sammy:
         sammy = False
     again= input("Do you want to play again? (y/n)\n").lower()
     if again != "y":
+        print("Thank you for playing. Have a fabulous day !!!")
         sammy = False
     else:
         print("\nAlright! I am thinking of a new number now... 🤭\n")
