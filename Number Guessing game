@@ -1,0 +1,170 @@
+import random
+
+list1 = list(range(1, 101))
+
+
+rn= random.choice(list1)
+
+
+print(r"""
+╭──────────────────────────────╮
+│ 🎲  N U M B E R    G U E S S  🎲 
+╰──────────────────────────────╯
+""")
+print(rn)
+print ("WELCOME TO NUMBER GUESSING GAME !!!")
+print("\nI am Merlin (YOUR DREAMGIRL). Let's see if you are good at reading a my mind 😚\n")
+print ("WARNING : You can never guess what I am thinking.")
+print ("EASY HINT : No. between 1 - 100")
+input("Press ENTER to continue...")
+sammy = True
+l=5
+l1=10
+
+while sammy:
+    n = input("EASY OR HARD LEVEL : (e/h)\n").lower()
+    print ("Easy level - 10 chances")
+    print ("Hard level - 5 chances")
+
+    if n == "h":
+
+        for i in range (l):
+            sam = int(input("Enter your guess: \n"))
+            if sam == rn:
+               print(f"\nSadly,You got it!. The number was : {rn}")
+               sammy = False
+            elif sam < 1 :
+                l = l - 1
+                print("YOU HAVE ENTERED A NUMBER LESS THAN 1. (Kindly enter numbers between 1-100 !!!)")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+            elif sam > 100:
+                l = l - 1
+                print("YOU HAVE ENTERED A NUMBER MORE THAN 100. (Kindly enter numbers between 1-100 !!!)")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+            elif  sam < (rn/2):
+                l = l - 1
+                print("TOO LOW. You can do better than that.")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+            elif (rn/2) <= sam < ((3*rn)/4):
+                l = l - 1
+                print("HOT but still it is LOW. You can do better than that.")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+
+            elif  ((3*rn)/4) <= sam < rn:
+                l= l-1
+                print("Almost there but it low. You can do better than that.")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+            elif sam > rn and sam <= (rn+5) :
+                l = l - 1
+                print("It is HIGH but close. You can do better than that.")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+            elif sam > rn and sam > (rn+5):
+                l = l - 1
+                print("TOO HIGH. You can do better than that.")
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+            else :
+                l=l-1
+                if l==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l} chances left")
+        sammy = False
+
+    elif n == "e":
+
+        for i in range (l1):
+            sam = int(input("Enter your guess: \n"))
+            if sam == rn:
+                print(f"\nSadly,You got it!. The number was : {rn}")
+                sammy = False
+                break
+            elif sam < 1 :
+                l1 = l1 - 1
+                print("YOU HAVE ENTERED A NUMBER LESS THAN 1. (Kindly enter numbers between 1-100 !!!)")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+            elif sam > 100:
+                l1 = l1 - 1
+                print("YOU HAVE ENTERED A NUMBER MORE THAN 100. (Kindly enter numbers between 1-100 !!!)")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+            elif  sam < (rn/2):
+                l1 = l1 - 1
+                print("TOO LOW. You can do better than that.")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+            elif (rn/2) <= sam < ((3*rn)/4):
+                l1 = l1 - 1
+                print("HOT but still it is LOW. You can do better than that.")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+
+            elif  ((3*rn)/4) <= sam < rn:
+                l1= l1-1
+                print("Almost there but it low. You can do better than that.")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+            elif sam > rn and sam <= (rn+5) :
+                l1 = l1 - 1
+                print("It is HIGH but close. You can do better than that.")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+            elif sam > rn and sam > (rn+5):
+                l1 = l1 - 1
+                print("TOO HIGH. You can do better than that.")
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+
+
+            else :
+                l1=l1-1
+                if l1==0:
+                    print("\n0 chances left. The number was : ",rn)
+                else:
+                    print(f"wrong number. Try again. You have {l1} chances left")
+
+        sammy = False
+    else:
+        print("INVALID INPUT. Try again.")
+        sammy = False
+    again= input("Do you want to play again? (y/n)\n").lower()
+    if again != "y":
+        sammy = False
+    else:
+        print("\nAlright! I am thinking of a new number now... 🤭\n")
+        sammy = True
