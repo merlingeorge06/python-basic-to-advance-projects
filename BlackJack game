@@ -77,41 +77,50 @@ while sammy:
         print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
         sammy = False
 
-    j=input("Type 'h' to hit or 's' to stay \n")
-    if j=='h':
-        rn=random.choice(list1)
-        player1.append(rn)
-        if calculate_ace(player1) == 21:
-            print(f"{n} you won !!!! BLACKJACK!!!")
-            print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
-            sammy = False
-        elif calculate_ace(player1) > 21:
-            print(f"{n} you lose !!!! BUSTED!!!")
-            print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
-            sammy = False
-    elif j=='s':
-        while calculate_ace(dealer1) <=17:
-            rnc=random.choice(list1)
-            dealer1.append(rnc)
+    if sammy :
+        j=input("Type 'h' to hit or 's' to stay \n")
+        if j=='h':
+           rn=random.choice(list1)
+           player1.append(rn)
+           if calculate_ace(player1) == 21:
+                 print(f"{n} you won !!!! BLACKJACK!!!")
+                 print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+                 sammy = False
+           elif calculate_ace(player1) > 21:
+                 print(f"{n} you lose !!!! BUSTED!!!")
+                 print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+                 sammy = False
+        elif j=='s':
+            while calculate_ace(dealer1) <=17:
+                 rnc=random.choice(list1)
+                 dealer1.append(rnc)
+
+            
+
             if calculate_ace(player1) == calculate_ace(dealer1):
-                print("Draw")
-                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
-                sammy = False
+                     print("Draw")
+                     print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+
+
             elif calculate_ace(player1) > calculate_ace(dealer1):
-                print(f"{n} you won !!!! BLACKJACK!!!")
-                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
-                sammy = False
+                     print(f"{n} you won !!!! BLACKJACK!!!")
+                     print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+
+
             elif calculate_ace(dealer1) > 21:
-                print(f"{n} you won !!!! BLACKJACK !!!!")
-                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
-                sammy = False
+                    print(f"{n} you won !!!! BLACKJACK !!!!")
+                    print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+
+
 
             else:
-                print(f"{n} you lose !!!! BUSTED!!!")
-                print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
-                sammy = False
-    else :
-        print("WRONG INPUT !BEEEP!")
+                    print(f"{n} you lose !!!! BUSTED!!!")
+                    print(f"Dealer's card : {dealer1} , {n} your cards are : {player1}")
+
+            sammy=False
+
+        else :
+          print("WRONG INPUT !BEEEP!")
 
 
 
@@ -122,3 +131,7 @@ while sammy:
  And to make this 'artsy' logo just ask chatgpt to make it for you in ASCII CODE
  SUIT YOURSELF ❤️
 '''
+
+
+
+
