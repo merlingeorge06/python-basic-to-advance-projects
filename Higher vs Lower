@@ -48,18 +48,19 @@ print("""
 
 ✅ If you guess wrong — the game is over and your final score is shown.
 """)
+pg = True
+while pg:
+    sammy = True
+    points = 0
+    while sammy:
 
-sammy = True
-points = 0
-while sammy:
 
-
-    a= random.choice(famous_insta_people)
-    b = random.choice(famous_insta_people)
-    ma= a[0], a[1], a[2]
-    mb = b[0], b[1], b[2]
-    print(f"[{ma}]\n")
-    vs_logo = r"""
+       a= random.choice(famous_insta_people)
+       b = random.choice(famous_insta_people)
+       ma= a[0], a[1], a[2]
+       mb = b[0], b[1], b[2]
+       print(f"[{ma}]\n")
+       vs_logo = r"""
     __      __   _____  
     \ \    / /  / ____| 
      \ \  / /  | (___   
@@ -67,43 +68,48 @@ while sammy:
        \  /     ____) | 
         \/     |_____/  
     """
-    print(vs_logo+"\n")
-    print(f"[{mb}]\n")
-    choice= input ("Which one of the above famous personalities have higher instagram followers? (A/B)\n\n").lower()
-    if choice == "a":
-        if a[3] > b[3]:
-            print(f"YOU ARE RIGHT ! {a[0]} has more followers than {b[0]}.")
-            print(f"{a[0]} has {a[3]} million followers and {b[0]} has {b[3]} million followers.")
-            points = points + 1
-            print("YOUR SCORE IS\n", points)
-        elif a[3] < b[3]:
-            print (f"UNFORTUNATELY YOU ARE WRONG ! {b[0]} has more followers than {a[0]}. ")
-            print (f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
-            print("YOUR SCORE IS", points)
-            sammy = False
+       print(vs_logo+"\n")
+       print(f"[{mb}]\n")
+       choice= input ("Which one of the above famous personalities have higher instagram followers? (A/B)\n\n").lower()
+       if choice == "a":
+          if a[3] > b[3]:
+              print(f"YOU ARE RIGHT ! {a[0]} has more followers than {b[0]}.")
+              print(f"{a[0]} has {a[3]} million followers and {b[0]} has {b[3]} million followers.")
+              points = points + 1
+              print("YOUR SCORE IS\n", points)
+          elif a[3] < b[3]:
+              print (f"UNFORTUNATELY YOU ARE WRONG ! {b[0]} has more followers than {a[0]}. ")
+              print (f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
+              print("YOUR SCORE IS", points)
+              sammy = False
 
-        elif a[3] == b[3]:
-            print (f"IT'S A DRAW ! {b[0]} and {a[0]} has equal followers.")
-            print (f"{a[0]} and {b[0]}, they both have {a[3]} million followers.")
-            points = points + 1
-            print("YOUR SCORE IS", points)
-    elif choice == "b":
-        if b[3] > a[3]:
-            print(f"YOU ARE RIGHT ! {a[0]} has more followers than {b[0]}.")
-            print(f"{a[0]} has {a[3]} million followers and {b[0]} has {b[3]} million followers.")
-            points = points + 1
-            print("YOUR SCORE IS", points)
-        elif b[3] < a[3]:
-            print (f"UNFORTUNATELY YOU ARE WRONG ! {b[0]} has more followers than {a[0]}. ")
-            print (f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
-            print("YOUR SCORE IS", points)
-            sammy = False
+          elif a[3] == b[3]:
+              print (f"IT'S A DRAW ! {b[0]} and {a[0]} has equal followers.")
+              print (f"{a[0]} and {b[0]}, they both have {a[3]} million followers.")
+              points = points + 1
+              print("YOUR SCORE IS", points)
+       elif choice == "b":
+          if b[3] > a[3]:
+              print(f"YOU ARE RIGHT ! {b[0]} has more followers than {a[0]}.")
+              print(f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
+              points = points + 1
+              print("YOUR SCORE IS", points)
+          elif b[3] < a[3]:
+              print (f"UNFORTUNATELY YOU ARE WRONG ! {a[0]} has more followers than {b[0]}. ")
+              print (f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
+              print("YOUR SCORE IS", points)
+              sammy = False
 
-        elif a[3] == b[3]:
-            print (f"IT'S A DRAW ! {b[0]} and {a[0]} has equal followers.")
-            print (f"{a[0]} and {b[0]}, they both have {a[3]} million followers.")
-            points = points + 1
-            print("YOUR SCORE IS", points)
-    else:
-        print("WRONG CHOICE!")
-        sammy = False
+          elif a[3] == b[3]:
+              print (f"IT'S A DRAW ! {b[0]} and {a[0]} has equal followers.")
+              print (f"{a[0]} and {b[0]}, they both have {a[3]} million followers.")
+              points = points + 1
+              print("YOUR SCORE IS", points)
+       else:
+         print("WRONG CHOICE!")
+         sammy = False
+    again= input("Would you like to play again? (Y/N) ").lower()
+    if again != 'y':
+        print("Thank you for playing!")
+        pg=False
+        break
