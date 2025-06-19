@@ -1,0 +1,109 @@
+import random
+
+famous_insta_people = [
+    ["Anushka Sharma", "Actress", "India", 67],
+    ["Zlatan Ibrahimovic", "Footballer", "Sweden", 67],
+    ["David Beckham", "Footballer", "UK", 87],
+    ["Zendaya", "Actress/Singer", "USA", 97],
+    ["Deepika Padukone", "Actress", "India", 81],
+    ["Priyanka Chopra", "Actress", "India", 90],
+    ["Gigi Hadid", "Model", "USA", 79],
+    ["LeBron James", "Basketball Player", "USA", 159],
+    ["Shakira", "Singer", "Colombia", 90],
+    ["Jennifer Lopez", "Singer/Actress", "USA", 253],
+    ["Kourtney Kardashian", "Influencer", "USA", 224],
+    ["Khloe Kardashian", "Influencer", "USA", 311],
+    ["Kendall Jenner", "Model", "USA", 293],
+    ["Taylor Swift", "Singer", "USA", 283],
+    ["Ariana Grande", "Singer", "USA", 380],
+    ["Kim Kardashian", "Influencer", "USA", 364],
+    ["Beyoncé", "Singer", "USA", 325],
+    ["Dwayne Johnson", "Actor/Wrestler", "USA", 393],
+    ["Selena Gomez", "Singer/Actress", "USA", 429],
+    ["Kylie Jenner", "Influencer", "USA", 400],
+    ["Justin Bieber", "Singer", "Canada", 293],
+    ["Lionel Messi", "Footballer", "Argentina", 501],
+    ["Virat Kohli", "Cricketer", "India", 271],
+    ["Cristiano Ronaldo", "Footballer", "Portugal", 630],  # Highest!
+    ["Neymar Jr.", "Footballer", "Brazil", 219]
+]
+logo = r"""
+==========================
+    HIGHER  vs  LOWER     
+==========================
+"""
+print(logo)
+print("""
+🎮 How to Play: Higher vs Lower
+
+✅ The game shows you a famous person's (A) name, their profession and from where they belong.
+
+✅ You will then be shown another famous person's (B) name, their profession and from where they belong.
+
+✅ BUT THEIR NO. OF FOLLOWERS IS HIDDEN
+
+✅ Your job: Guess which personality has higher followers. (A/B)
+
+✅ If you guess correctly — your score increases and the game continues.
+
+✅ If you guess wrong — the game is over and your final score is shown.
+""")
+
+sammy = True
+points = 0
+while sammy:
+
+
+    a= random.choice(famous_insta_people)
+    b = random.choice(famous_insta_people)
+    ma= a[0], a[1], a[2]
+    mb = b[0], b[1], b[2]
+    print(f"[{ma}]\n")
+    vs_logo = r"""
+    __      __   _____  
+    \ \    / /  / ____| 
+     \ \  / /  | (___   
+      \ \/ /    \___ \  
+       \  /     ____) | 
+        \/     |_____/  
+    """
+    print(vs_logo+"\n")
+    print(f"[{mb}]\n")
+    choice= input ("Which one of the above famous personalities have higher instagram followers? (A/B)\n\n").lower()
+    if choice == "a":
+        if a[3] > b[3]:
+            print(f"YOU ARE RIGHT ! {a[0]} has more followers than {b[0]}.")
+            print(f"{a[0]} has {a[3]} million followers and {b[0]} has {b[3]} million followers.")
+            points = points + 1
+            print("YOUR SCORE IS\n", points)
+        elif a[3] < b[3]:
+            print (f"UNFORTUNATELY YOU ARE WRONG ! {b[0]} has more followers than {a[0]}. ")
+            print (f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
+            print("YOUR SCORE IS", points)
+            sammy = False
+
+        elif a[3] == b[3]:
+            print (f"IT'S A DRAW ! {b[0]} and {a[0]} has equal followers.")
+            print (f"{a[0]} and {b[0]}, they both have {a[3]} million followers.")
+            points = points + 1
+            print("YOUR SCORE IS", points)
+    elif choice == "b":
+        if b[3] > a[3]:
+            print(f"YOU ARE RIGHT ! {a[0]} has more followers than {b[0]}.")
+            print(f"{a[0]} has {a[3]} million followers and {b[0]} has {b[3]} million followers.")
+            points = points + 1
+            print("YOUR SCORE IS", points)
+        elif b[3] < a[3]:
+            print (f"UNFORTUNATELY YOU ARE WRONG ! {b[0]} has more followers than {a[0]}. ")
+            print (f"{b[0]} has {b[3]} million followers and {a[0]} has {a[3]} million followers.")
+            print("YOUR SCORE IS", points)
+            sammy = False
+
+        elif a[3] == b[3]:
+            print (f"IT'S A DRAW ! {b[0]} and {a[0]} has equal followers.")
+            print (f"{a[0]} and {b[0]}, they both have {a[3]} million followers.")
+            points = points + 1
+            print("YOUR SCORE IS", points)
+    else:
+        print("WRONG CHOICE!")
+        sammy = False
