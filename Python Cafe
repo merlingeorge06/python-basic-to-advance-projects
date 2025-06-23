@@ -1,0 +1,172 @@
+import time
+
+def preparing_animation():
+    print("\nPreparing your order", end="")
+    for i in range(5):
+        print(".", end="", flush=True)
+        time.sleep(1)  # Half second delay for each dot
+    print("\nYour order is ready!☕\n")
+
+water = 1500
+milk = 1500
+sugar= 1000
+cp= 1500
+money = 0
+lays = 100
+biscuits = 100
+
+
+
+
+print(r"""
+                  ╭────────────────────────────────────╮
+                  │                                    │
+                      ☕  WELCOME TO PYTHON CAFE  ☕     
+                  ╰────────────────────────────────────╯
+""")
+print("                               MENU :\n                  ")
+print("                             1.ESPRESSO")
+print("                             2.LATTE")
+print("                             3.CAPPUCCINO")
+print("                             4.AMERICANO LAYS")
+print("                             5.NUTTY BISCUITS\n")
+sammy=True
+while sammy:
+
+    sam = int(input("How many total orders are there ?\n "))
+    if sam == 0: #(FOR OWNER TO CHECK THE REPORT)
+        print(f"""
+              Water : {water}
+              Milk : {milk}
+              Sugar: {sugar}
+              CP : {cp}
+              Money : {money}
+              Biscuits : {biscuits}
+              Lays : {lays}
+               """)
+        sammy = False
+        break
+    else:
+        for i in range(1, sam + 1):
+             n=int(input("Enter your choice of hot beverage/eatery:\n"))
+
+             if n==1:
+              print("Your choice of hot beverage is: ESPRESSO")
+              print ("It is of 50 /-\n")
+
+              money += 50
+              if water < 50:
+                  print("INSUFFICIENT WATER !!!! PLEASE TRY AGAIN LATER")
+                  sammy=False
+                  break
+              else:
+                  water -= 50
+              if cp < 18:
+                  print("INSUFFICIENT COFFEE POWDER !!!! PLEASE TRY AGAIN LATER")
+                  break
+              else:
+                  cp -= 18
+              if sugar < 4:
+                  print("INSUFFICIENT SUGAR !!!! PLEASE TRY AGAIN LATER")
+                  break
+              else :
+                  sugar -= 4
+             elif n==2:
+               print("Your choice of hot beverage is: LATTE")
+               print ("It is of 100 /-\n")
+               money += 100
+               if water < 200:
+                   print("INSUFFICIENT WATER !!!! PLEASE TRY AGAIN LATER")
+                   sammy = False
+                   break
+               else:
+                   water -= 200
+               if cp < 24:
+                   print("INSUFFICIENT COFFEE POWDER !!!! PLEASE TRY AGAIN LATER")
+                   break
+               else:
+                   cp -= 24
+               if sugar < 8:
+                   print("INSUFFICIENT SUGAR !!!! PLEASE TRY AGAIN LATER")
+                   break
+               else:
+                   sugar -= 8
+               if milk < 150 :
+                   print("INSUFFICIENT MILK !!!! PLEASE TRY AGAIN LATER")
+                   break
+               else :
+                   milk -= 150
+
+             elif n==3:
+               print("Your choice of hot beverage is: CAPPUCCINO")
+               print ("It is of 150 /-\n")
+               money += 150
+               if water < 250:
+                   print("INSUFFICIENT WATER !!!! PLEASE TRY AGAIN LATER")
+                   sammy = False
+                   break
+               else:
+                   water -= 250
+               if cp < 24:
+                   print("INSUFFICIENT COFFEE POWDER !!!! PLEASE TRY AGAIN LATER")
+                   break
+               else:
+                   cp -= 24
+               if sugar < 8:
+                   print("INSUFFICIENT SUGAR !!!! PLEASE TRY AGAIN LATER")
+                   break
+               else:
+                   sugar -= 8
+               if milk < 100:
+                   print("INSUFFICIENT MILK !!!! PLEASE TRY AGAIN LATER")
+                   break
+               else:
+                   milk -= 100
+             elif n==4:
+                 if lays < 1:
+                     print("INSUFFICIENT LAYS !!!! PLEASE TRY AGAIN LATER")
+                 else:
+                     print("Your choice of eatery is : AMERICANO LAYS")
+                     print("It is of 30 /- ")
+                     money += 30
+                     lays -= 1
+             elif n==5:
+                 if biscuits < 1:
+                     print("INSUFFICIENT BISCUITS !!!! PLEASE TRY AGAIN LATER")
+                 else:
+                     print("Your choice of eatery is: NUTTY BISCUITS")
+                     print("It is of 40 /- ")
+                     money += 40
+                     biscuits -= 1
+             else :
+                 print("Please enter your choice between 1-3. ")
+                 continue
+        preparing_animation()
+        input("So your Total is..... (Press Enter)\n")
+        print("Your total is:\n", money,"/-")
+        m1 = int(input("Kindly insert the money into the small space provided above !!! "))
+        change = m1 - money
+        print(f"You inserted {m1} /-.")
+        if change < 0:
+           print("You inserted a lesser amount than the total amount.")
+           print("TRY AGAIN.Thank You\n")
+           break
+        elif change > 0:
+           print("Thank You. Payment Done !!!. Your change is : ",change, "/-")
+           donate = input("Do you want to donate your change to the poor kids ? (Y/N) :").lower()
+           if donate == "y":
+               money += change
+               print ("THANK YOU FOR DONATING YOUR MONEY !!! GOD BLESS\n")
+           else:
+               print("Once again, Thank you !!\n")
+        elif change == 0:
+           print("Thank You. Payment Done !!!\n")
+        else:
+           print ("KINDLY TRY AGAIN !!! (Please insert your money properly)\n")
+        again = input("Do you want to order again? (Y/N) : \n").lower()
+        if again == 'y':
+          print("Thank You for choosing your favourite 'PYTHON CAFE' !!!\n")
+          sammy = True
+        else:
+          print("Thank for using our service. Kindly come again !!!\n")
+          sammy = False
