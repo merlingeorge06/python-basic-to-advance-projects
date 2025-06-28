@@ -1,0 +1,224 @@
+class Pyquiz:
+    def __init__(self,name,class_,roll_no,):
+        self.name = name
+        self.class_ = class_
+        self.roll_no = roll_no
+        self.score = 0
+
+    def question1(self):
+        first_question = input("""
+         What is a class in Python?
+         A) A built-in data type
+         B) A function that returns data
+         C) A blueprint for creating objects
+         D) A list of variables\n""").upper()
+        if first_question == "C":
+            print("RIGHT ANSWER : C) A blueprint for creating objects")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : C) A blueprint for creating objects")
+
+
+
+    def question2(self):
+        second_question = input("""
+        Which of the following creates an object of a class named Student?
+        A) Student[]
+        B) Student()
+        C) Student.create()
+        D) new Student()\n""").upper()
+        if second_question == "B":
+            print("RIGHT ANSWER : B) Student() ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print ("RIGHT ANSWER : B) Student()")
+
+    def question3 (self):
+        third_question = input("""
+        Which method is called automatically when an object is created?
+        A) start()
+        B) create()
+        C) __init__()
+        D) __main__()\n""").upper()
+        if third_question == "C":
+            print("RIGHT ANSWER : C) __init__() ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : C) __init__() ")
+
+    def question4(self):
+        fourth_question = input("""
+        What does the self keyword refer to inside a class method?
+        A) The class name
+        B) The parent class
+        C) The current object
+        D) A global variable\n""").upper()
+        if fourth_question == "C":
+            print("RIGHT ANSWER : C) The current object")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : C) The current object")
+
+    def question5(self):
+        fifth_question = input("""
+        What will this code output?
+        class A:
+         def __init__(self):
+         print("Hello")
+
+        a = A()
+        
+        A) Error
+        B) Hello
+        C) Nothing
+        D) a\n
+        """).upper()
+        if fifth_question == "B":
+            print("RIGHT ANSWER : B) Hello ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : B) Hello ")
+
+    def question6(self):
+        sixth_question = input("""
+        Which method is used to define behavior (actions) in a class?
+        A) Attributes
+        B) Constructor
+        C) Method
+        D) Object\n
+        """).upper()
+        if sixth_question == "C":
+            print("RIGHT ANSWER : C) Method() ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : C) Method() ")
+
+    def question7(self):
+        seventh_question = input("""
+        What is an attribute in a class?
+        A) A function inside a class
+        B) A parameter in a function
+        C) A variable that belongs to an object
+        D) A module\n
+        """).upper()
+        if seventh_question == "C":
+            print("RIGHT ANSWER : C) A variable that belongs to an object  ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : C) A variable that belongs to an object  ")
+
+    def question8(self):
+        eighth_question = input("""
+        What happens if you forget to use self in method definitions inside a class?
+        A) Nothing
+        B) Method will still work
+        C) SyntaxError
+        D) TypeError when called\n""").upper()
+        if eighth_question == "D":
+            print("RIGHT ANSWER : D) TypeError when called")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : D) TypeError when called")
+
+    def question9(self):
+        third_question = input("""
+        Which of the following defines a class correctly in Python?
+        A) define class Student:
+        B) class Student:
+        C) create class Student():
+        D) new Student()\n""").upper()
+        if third_question == "B":
+            print("RIGHT ANSWER : B) class Student() ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : B) class Student() ")
+
+    def question10(self):
+        fourth_question = input("""
+        What will be the output of the following code?
+        class Test:
+          def __init__(self, value):
+            self.value = value
+          def show(self):
+            print(self.value)
+
+          t = Test(5)
+          t.show()
+          
+          A) Error
+          B) 0
+          C) 5
+          D) None\n
+""").upper()
+        if fourth_question == "C":
+            print("RIGHT ANSWER : C) 5 ")
+            self.score = self.score + 2
+        else:
+            print("WRONG ANSWER")
+            print("RIGHT ANSWER : C) 5 ")
+
+
+    def final_score(self):
+     print("\n📋 Quiz Completed!")
+     print("Your final score is:", self.score, "out of 20")
+
+     if 18 <= self.score <= 20:
+        print("🏆 Grade : A+")
+     elif 14 <= self.score <= 17:
+        print("🎖️ Grade : A")
+     elif 10 <= self.score <= 13:
+        print("👍 Grade : B")
+     elif 7 <= self.score <= 9:
+        print("👌 Grade : C")
+     elif 4 <= self.score <= 6:
+        print("🙁 Grade : D")
+     elif 0 <= self.score <= 3:
+        print("❌ Grade : F")
+     else:
+        print("⚠️ Invalid score.")
+
+
+print("""==================================================
+                           🎓 PYQUIZ 🎓
+         ==================================================
+               Test Your Knowledge of Python Classes!
+         ==================================================""")
+name_ = input("Enter your Name: ").upper().strip()
+class_1 = input("Enter your Class: ").upper().strip()
+roll__no = input("Enter your Roll No: ").upper().strip()
+print("📝 Total Questions  : 10")
+print("📊 Total Marks      : 20")
+print("✅ Each Question    : 2 Marks")
+print("⏱️ Time Limit       : 20 Minutes")
+print("-"*60)
+print("📌 INSTRUCTIONS:")
+print("1. This is a multiple-choice quiz on Python Classes.")
+print("2. Each question has 4 options — A, B, C, and D.")
+print("3. Type the **correct option letter** (A/B/C/D) only.")
+print("4. There is no negative marking.")
+print("5. Please answer all questions sincerely.")
+print("="*60)
+input("👉 Press Enter to start the quiz...")
+
+
+q=Pyquiz(name=name_,class_=class_1,roll_no=roll__no)
+q.question1()
+q.question2()
+q.question3()
+q.question4()
+q.question5()
+q.question6()
+q.question7()
+q.question8()
+q.question9()
+q.question10()
+q.final_score()
