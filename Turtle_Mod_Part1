@@ -1,0 +1,146 @@
+import turtle as tr
+import random
+
+t = tr.Turtle()
+t.shape("arrow")  # or 'circle' for a round shape
+t.turtlesize(2)
+tr.bgcolor("white")
+t.color("BLACK")
+t.pensize(15)
+t.speed("fastest")
+t.setpos(0, 0)
+t.speed(5)
+
+tr.title("Turtle module")
+tr.setup(width=1000, height=550)
+
+def random_color():
+    tr.colormode(255)
+    color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    t.pencolor(color)
+
+def colour_():
+
+    for i in range(1):
+
+        random_color()
+        t.forward(1)
+        t.penup()
+        t.forward(50)
+        random_color()
+        t.pendown()
+        t.forward(1)
+        t.penup()
+        t.forward(50)
+        random_color()
+        t.pendown()
+        t.forward(1)
+        t.penup()
+        t.forward(50)
+        random_color()
+        t.pendown()
+        t.forward(1)
+        t.penup()
+        t.forward(50)
+        random_color()
+        t.pendown()
+        t.forward(1)
+        t.penup()
+        t.forward(50)
+        random_color()
+        t.pendown()
+        t.forward(1)
+        t.penup()
+        t.forward(50)
+        random_color()
+        t.pendown()
+        t.forward(1)
+
+def movement():
+
+      colour_()
+      for i in range(2):
+       t.setheading(90)
+       t.penup()
+       t.forward(50)
+       t.setheading(180)
+       t.pendown()
+       colour_()
+       t.setheading(90)
+       t.penup()
+       t.forward(50)
+       t.setheading(360)
+       t.pendown()
+       colour_()
+
+
+def shape():
+
+    random_color()
+    t.shape("arrow")
+    t.setheading(180)
+    t.forward(100)
+    t.right(120)
+    t.forward(100)
+    t.right(120)
+    t.forward(100)
+    t.right(120)
+    random_color()
+    t.forward(100)
+    t.right(90)
+    t.forward(100)
+    t.right(90)
+    t.forward(100)
+    t.right(90)
+    t.forward(100)
+    t.right(90)
+    random_color()
+    t.forward(100)
+    t.right(72)
+    t.forward(100)
+    t.right(72)
+    t.forward(100)
+    t.right(72)
+    t.forward(100)
+    t.right(72)
+    t.forward(100)
+    t.right(72)
+    random_color()
+    t.forward(100)
+    t.right(60)
+    t.forward(100)
+    t.right(60)
+    t.forward(100)
+    t.right(60)
+    t.forward(100)
+    t.right(60)
+    t.forward(100)
+    t.right(60)
+    t.forward(100)
+    t.right(60)
+    t.forward(100)
+
+
+def multiplecircle_():
+    for i in range(50):
+       dirn = random.randint(0, 360)
+       random_color()
+       t.speed("fastest")
+       t.circle(100)
+       t.setheading(dirn)
+
+
+
+
+
+
+
+
+
+
+
+movement()
+# THERE ARE 3 FUNCTIONS, I ONLY HAVE CALLED ONE
+
+sc = tr.Screen()
+sc.exitonclick()
