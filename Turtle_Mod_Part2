@@ -1,0 +1,40 @@
+import turtle as tr
+from logging.config import listen
+
+t = tr.Turtle()
+tr.bgcolor("white")
+t.shape("arrow")
+t.color("black")
+t.pensize(3)
+t.pencolor("limegreen")
+t.speed("fastest")
+tr.title("Etch-a-sketch")
+
+def maze():
+    pass
+
+def forward():
+
+    t.forward(20)
+def left():
+    nh= t.heading() + 10
+    t.seth(nh)
+    # OR t.left(10)
+def right():
+    nh= t.heading() - 10
+    t.seth(nh)
+    # OR t.right (10)
+def backward():
+
+    t.backward(20)
+
+listen()
+sc = tr.Screen()
+
+sc.setup(width=700, height=600, startx=10, starty=15)
+sc.listen()
+sc.onkey(left, "a")
+sc.onkey(right, "d")
+sc.onkey(forward, "w")
+sc.onkey(backward, "s")
+sc.exitonclick()
