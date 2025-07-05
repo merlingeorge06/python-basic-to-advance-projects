@@ -1,0 +1,44 @@
+import turtle as tr
+import random
+sc=tr.Screen()
+sc.setup(800,600)
+user_ip=sc.textinput(title="Welcome to Toto Race", prompt="Which color of turtle will win the race?")
+y_dist=[-150,-100,-50,0,50,100,150]
+all_turtles = []
+
+colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'black', 'white', 'gray', 'brown', 'cyan',
+          'magenta', 'violet', 'indigo', 'turquoise', 'gold', 'silver', 'maroon', 'navy', 'lime', 'olive', 'teal',
+          'aqua', 'beige', 'chocolate', 'coral', 'crimson', 'darkgreen', 'darkblue', 'deeppink', 'firebrick',
+          'hotpink', 'lightblue', 'lightgreen', 'orchid', 'plum', 'salmon', 'sienna', 'skyblue', 'tan', 'tomato', 'wheat']
+
+
+for i in range(0,7):
+    tim=tr.Turtle()
+    tim.shape("turtle")
+    tim.color(colors[i])
+    tim.penup()
+    tim.goto(x=-380,y=y_dist[i])
+    all_turtles.append(tim)
+
+
+if user_ip:
+    is_racing = True
+
+    while is_racing:
+
+        for j in all_turtles:
+
+
+            j.pendown()
+            j.forward(random.randint(0, 11))
+            if j.xcor()>379:
+                is_racing = False
+                j.penup()
+                if j.color()==user_ip:
+                    print(f"YOU HAVE WON THE BET. {j.color()} turtle is the winner!")
+                else:
+                    print(f"YOU HAVE LOST THE BET.{j.color()} turtle is the winner!")
+                break
+
+
+sc.exitonclick()
