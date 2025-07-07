@@ -1,0 +1,134 @@
+import turtle as tr
+import random
+
+
+sc = tr.Screen()
+sc.setup(800, 600)
+sc.tracer(0)
+tr.bgcolor("black")
+score1 = 0
+score2 = 0
+game_is_on = True
+
+def divison_board():
+    dot_line = tr.Turtle()
+    dot_line.hideturtle()
+    dot_line.pencolor("limegreen")
+    dot_line.pensize(3)
+    dot_line.penup()
+    dot_line.goto(0, 290)
+    dot_line.rt(90)
+    for i in range(29):
+        dot_line.pendown()
+        dot_line.forward(10)
+        dot_line.penup()
+        dot_line.forward(10)
+
+sc1 = tr.Turtle()
+sc1.hideturtle()
+sc1.color("white")
+sc1.penup()
+sc1.goto(x=-370, y=265)
+
+sc2 = tr.Turtle()
+sc2.hideturtle()
+sc2.color("white")
+sc2.penup()
+sc2.goto(x=370, y=265)
+
+def score_board1():
+    sc1.clear()
+    sc1.write(f"Computer-Score:{score1}", align="left", font=("Arial", 15, "normal"))
+
+def score_board2():
+    sc2.clear()
+    sc2.write(f"Your-Score:{score2}", align="right", font=("Arial", 15, "normal"))
+
+block1 = tr.Turtle()
+block1.shapesize(stretch_wid=3, stretch_len=1)
+block1.color("white")
+block1.shape("square")
+block1.penup()
+block1.goto(-380, -200)
+
+block2 = tr.Turtle()
+block2.shapesize(stretch_wid=3, stretch_len=1)
+block2.color("white")
+block2.shape("square")
+block2.penup()
+block2.goto(375, 200)
+
+ball = tr.Turtle()
+ball.shapesize(stretch_wid=1, stretch_len=1)
+ball.shape("circle")
+ball.color("orange")
+ball.penup()
+divison_board()
+dirn_y = random.randint(-200, 200)
+l1 = [-3, 3]
+ball_dx = random.choice(l1)
+ball_dy = random.choice(l1)
+
+def ball_move():
+    global ball_dx, ball_dy, score1, score2
+    ball.setx(ball.xcor() + ball_dx)
+    ball.sety(ball.ycor() + ball_dy)
+
+    if ball.ycor() > 290 or ball.ycor() < -290:
+        ball_dy *= -1
+
+    if ball.distance(block2) < 50 and ball_dx > 0 and ball.xcor() > 340:
+        ball_dx *= -1
+
+    if ball.distance(block1) < 50 and ball_dx < 0 and ball.xcor() < -340:
+        ball_dx *= -1
+
+    if ball.xcor() > 400:
+        score1 += 1
+        reset_ball(-1)
+
+    if ball.xcor() < -400:
+        score2 += 1
+        reset_ball(1)
+
+    comp_move()
+    sc.update()
+    sc.ontimer(ball_move, 20)
+
+def reset_ball(direction):
+    global ball_dx, ball_dy
+    ball.goto(0, 0)
+    ball_dx = direction * 3
+    ball_dy = random.choice([-3, 3])
+    score_board1()
+    score_board2()
+
+def comp_move():
+    if ball.ycor() > block1.ycor() + 10 and block1.ycor() < 260:
+        block1.sety(block1.ycor() + 3)
+    elif ball.ycor() < block1.ycor() - 10 and block1.ycor() > -260:
+        block1.sety(block1.ycor() - 3)
+
+def paddle_up():
+    y = block2.ycor() + 30
+    if y < 260:
+        block2.sety(y)
+
+def paddle_down():
+    y = block2.ycor() - 30
+    if y > -260:
+        block2.sety(y)
+
+sc.listen()
+sc.onkeypress(paddle_up, "Up")
+sc.onkeypress(paddle_down, "Down")
+
+def game_on():
+    score_board1()
+    score_board2()
+    sc.update()
+    sc.ontimer(game_on, 150)
+
+game_on()
+ball_move()
+sc.mainloop()
