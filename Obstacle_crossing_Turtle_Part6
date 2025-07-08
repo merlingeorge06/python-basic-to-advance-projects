@@ -1,0 +1,91 @@
+import turtle as tr
+import random as rd
+
+score = 0
+tr.bgcolor("white")
+tr.title("Obstacle Survivor")
+tr.tracer(0)
+sc=tr.Screen()
+sc.setup(800,600)
+
+toto= tr.Turtle()
+toto.color("Black")
+toto.shape("turtle")
+toto.shapesize(1.5)
+toto.penup()
+toto.left(90)
+toto.goto(x=-100,y=0)
+
+colour=['red','green','blue','yellow','magenta','cyan','pink','gray']
+blocks=[]
+def blockie():
+    for i in range(10):
+     dirn_x = rd.randint(0, 400)
+     dirn_y = rd.randint(-290, 290)
+     bl=tr.Turtle()
+     bl.goto(-2,-3)
+     bl.shape("square")
+     bl.shapesize(stretch_wid=1, stretch_len=3)
+     bl.color(rd.choice(colour))
+     bl.penup()
+     bl.goto(dirn_x,dirn_y)
+     blocks.append(bl)
+
+
+
+blockie()
+
+score_turtle = tr.Turtle()
+score_turtle.hideturtle()
+score_turtle.penup()
+score_turtle.goto(0, 260)
+score_turtle.write(f"Score: {score}", align="center", font=("Arial", 16, "bold"))
+
+
+def collision():
+
+    for block in blocks:
+        if block.distance(toto) < 25:
+            cl = tr.Turtle()
+            cl.hideturtle()
+            cl.color("red")
+            cl.penup()
+            cl.clear()
+            cl.write("GAME-OVER", align="center", font=("Arial", 24, "bold"))
+
+
+
+
+def move_up():
+    toto.forward(10)
+
+def move_down():
+    toto.backward(10)
+
+
+sc.listen()
+sc.onkeypress(move_up," Up")
+sc.onkeypress(move_down," Down")
+
+
+def game_on():
+    global score
+    for block in blocks:
+        block.setx(block.xcor()-10); block.speed(3)
+        if block.xcor()<-400:
+            block.goto(rd.randint(40, 400),rd.randint(-290, 290))
+            score += 1
+            score_turtle.clear()
+            score_turtle.write(f"Score: {score}", align="center", font=("Arial", 16, "bold"))
+
+    collision()
+    sc.update()
+    sc.ontimer(game_on, 150)
+
+
+game_on()
+
+
+sc.mainloop()
+
+#Why is it so hard to code ???
