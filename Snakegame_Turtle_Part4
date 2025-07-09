@@ -1,50 +1,62 @@
 import turtle as tr
 import random as rd
 
-
-
-sc=tr.Screen()
+sc = tr.Screen()
 sc.setup(800, 600)
 sc.bgcolor("black")
+sc.title("Snake Game")
 sc.tracer(0)
-coordinates_=[(0,0),(-20,0),(-40,0)]
-all_turtles=[]
-score=0
 
+score = 0
+high_score = 0
+direction = 'Up'
+all_turtles = []
 
-for coordinate in coordinates_:
-    new_toto=tr.Turtle()
-    new_toto.shape("square")
-    new_toto.color("limegreen")
-    new_toto.speed(0)
-    new_toto.penup()
-    new_toto.goto(coordinate)
-    all_turtles.append(new_toto)
+score_bd = tr.Turtle()
+score_bd.hideturtle()
+score_bd.penup()
+score_bd.goto(x=-370, y=265)
+score_bd.pencolor("white")
 
+high_score_bd = tr.Turtle()
+high_score_bd.hideturtle()
+high_score_bd.penup()
+high_score_bd.goto(x=-270, y=265)
+high_score_bd.color("white")
 
+apple_ = tr.Turtle()
+apple_.shape("circle")
+apple_.color("red")
+apple_.penup()
+apple_.speed(0)
 
-sc.update()
-direction= 'Up'
+def init_snake():
+    global all_turtles
+    all_turtles.clear()
+    coordinates_ = [(0, 0), (-60, 0), (-120, 0)]
+    for coordinate in coordinates_:
+        new_toto = tr.Turtle()
+        new_toto.shape("square")
+        new_toto.color("limegreen")
+        new_toto.speed(0)
+        new_toto.penup()
+        new_toto.goto(coordinate)
+        all_turtles.append(new_toto)
 
-game_has_begun = True
 def move():
-    for i in range(len(all_turtles)-1,0,-1):
-        new_x=all_turtles[i-1].xcor()
-        new_y=all_turtles[i-1].ycor()
-        all_turtles[i].goto(new_x,new_y)
+    for i in range(len(all_turtles) - 1, 0, -1):
+        new_x = all_turtles[i - 1].xcor()
+        new_y = all_turtles[i - 1].ycor()
+        all_turtles[i].goto(new_x, new_y)
     if direction == 'Up':
         all_turtles[0].setheading(90)
-
     elif direction == 'Down':
         all_turtles[0].setheading(270)
-
     elif direction == 'Left':
         all_turtles[0].setheading(180)
-
     elif direction == 'Right':
         all_turtles[0].setheading(0)
     all_turtles[0].forward(20)
-
 
 def move_up():
     global direction
@@ -56,27 +68,17 @@ def move_down():
         direction = 'Down'
 def move_right():
     global direction
-    if direction  != 'Left':
+    if direction != 'Left':
         direction = 'Right'
 def move_left():
     global direction
     if direction != 'Right':
-         direction = 'Left'
-
-apple_=tr.Turtle()
-dirnx= rd.randint(-380,380)
-dirny=rd.randint(-270,270)
-apple_.shape("circle")
-apple_.color("red")
-apple_.penup()
-apple_.speed(0)
-apple_.goto(x=dirnx,y=dirny)
+        direction = 'Left'
 
 def new_snak_length():
-    ns=tr.Turtle()
+    ns = tr.Turtle()
     ns.shape("square")
     ns.color("limegreen")
-    ns.shapesize(stretch_wid=1, stretch_len=1)
     ns.penup()
     ns.speed(0)
     ns.goto(all_turtles[-1].position())
@@ -85,30 +87,29 @@ def new_snak_length():
 def score_board():
     score_bd.clear()
     score_bd.write(f"Score: {score}", align="left", font=("Arial", 15, "bold"))
-
-
-
+    high_score_bd.clear()
+    high_score_bd.write(f"High Score: {high_score}", align="left", font=("Arial", 15, "bold"))
 
 def food_movement():
-    global apple_,dirnx,dirny,score
+    global score, high_score
     if all_turtles[0].distance(apple_) < 20:
         new_snak_length()
-        score+=1
+        score += 1
+        if score > high_score:
+            high_score = score
         score_board()
-        dirnx = rd.randint(-370, 370)
-        dirny = rd.randint(-270, 270)
-        apple_.goto(x=dirnx, y=dirny)
+        apple_.goto(rd.randint(-370, 370), rd.randint(-270, 270))
 
 def border():
-    border_=tr.Turtle()
+    border_ = tr.Turtle()
     border_.hideturtle()
     border_.pencolor("white")
     border_.pensize(2)
     border_.penup()
     border_.speed(0)
-    border_.goto(x=-390,y=290)
+    border_.goto(x=-390, y=290)
     border_.pendown()
-    for i in range(2):
+    for _ in range(2):
         border_.fd(770)
         border_.rt(90)
         border_.fd(570)
@@ -117,49 +118,71 @@ def border():
 def check_wall_collision():
     x, y = all_turtles[0].position()
     return x < -380 or x > 390 or y < -290 or y > 290
+
 def tail_meets():
     for segment in all_turtles[1:]:
-        if all_turtles[0].distance(segment) < 20:
-            game_over()
-            return
+        if all_turtles[0].distance(segment) < 10:
+            return True
+    return False
+end = tr.Turtle()
 def game_over():
-    end = tr.Turtle()
+
     end.hideturtle()
     end.color("red")
     end.write("GAME OVER", align="center", font=("Arial", 32, "bold"))
-score_bd=tr.Turtle()
-score_bd.hideturtle()
-score_bd.goto(x=-370,y=265)
-score_bd.pencolor("white")
 
 
+def reset():
+    global score, direction
+    score = 0
+    direction = 'Up'
 
+ 
+    for seg in all_turtles:
+        seg.goto(1000, 1000)  # move them out of view
+        seg.clear()
 
+    init_snake()
 
-border()
-score_board()
+    end.clear()
+    set_controls()
+    
+    apple_.goto(rd.randint(-370, 370), rd.randint(-270, 270))
 
-
-sc.listen()
-sc.onkey(move_up, "Up")
-sc.onkey(move_down, "Down")
-sc.onkey(move_left, "Left")
-sc.onkey(move_right, "Right")
+    score_board()
+    sc.update()
+    game_loop()  
 
 
 def game_loop():
-
     move()
-    if check_wall_collision():
+    if check_wall_collision() or tail_meets():
         game_over()
+        user_ip = sc.textinput("PLAY AGAIN", "Would you like to play again? (yes/no)")
+        if user_ip and user_ip.lower() == "yes":
+            reset()
+        else:
+            print("Thank you for playing!")
+            sc.bye()
         return
-    tail_meets()
+
     food_movement()
     sc.update()
     sc.ontimer(game_loop, 150)
+
+
+border()
+init_snake()
+apple_.goto(rd.randint(-370, 370), rd.randint(-270, 270))
+score_board()
+
+def set_controls():
+    sc.listen()
+    sc.onkey(move_up, "Up")
+    sc.onkey(move_down, "Down")
+    sc.onkey(move_left, "Left")
+    sc.onkey(move_right, "Right")
+set_controls()
+
 game_loop()
-
-
-
 sc.mainloop()
-
