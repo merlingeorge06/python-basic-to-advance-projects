@@ -1,0 +1,36 @@
+import turtle as tr
+import pandas as pd
+
+
+sc = tr.Screen()
+tr.title("Geography Game")
+sc.bgpic("my_map.gif")  
+sc.setup(width=800, height=600)
+
+
+t = tr.Turtle()
+t.hideturtle()
+t.penup()
+t.speed(0)
+
+
+data = pd.read_csv(r"C:\Users\Asus\PycharmProjects\pythonprojects\states.csv")
+STATES = data['State'].to_list()
+X = data['X'].to_list()
+Y = data['Y'].to_list()
+
+
+score = 0
+guessed_states = []
+
+
+while score < len(STATES):
+    user_input = sc.textinput(f"{score}/{len(STATES)} Correct", "Guess a State of India").title()
+
+    if user_input in STATES and user_input not in guessed_states:
+
+
+        guessed_states.append(user_input)
+        score += 1
+
+sc.mainloop()
