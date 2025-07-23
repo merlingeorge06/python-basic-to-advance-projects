@@ -1,0 +1,43 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
+
+
+url = "https://raw.githubusercontent.com/AdiPersonalWorks/Random/master/student_scores%20-%20student_scores.csv"
+data = pd.read_csv(url)
+
+
+print(data.head())
+
+
+plt.scatter(data['Hours'], data['Scores'])
+plt.title('Hours vs Scores')
+plt.xlabel('Hours Studied')
+plt.ylabel('Score')
+plt.show()
+
+
+X = data[['Hours']]
+y = data['Scores']
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+
+y_pred = model.predict(X_test)
+
+
+mae = mean_absolute_error(y_test, y_pred)
+print("Mean Absolute Error:", mae)
+
+
+hours = [[9.25]]
+predicted_score = model.predict(hours)
+print(f"Predicted Score for 9.25 hours: {predicted_score[0]:.2f}")
